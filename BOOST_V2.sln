@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31919.166
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20211207-DataAccessAdoNet", "20211207-DataAccessAdoNet", "{E828CC33-FB93-43D9-8F28-3C0B97A8CA53}"
 EndProject
@@ -14,6 +14,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-SehirBolgeListele", "03-SehirBolgeListele\03-SehirBolgeListele.csproj", "{B8EAF87F-0E52-438F-A697-F20BFFFEB6AD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-OgrenciBilgiSistemi", "04-OgrenciBilgiSistemi\04-OgrenciBilgiSistemi.csproj", "{29185933-2F67-4946-A70F-4C762FBD49E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20211208-OdoNet_Devam", "20211208-OdoNet_Devam", "{FE10924D-942F-457F-9549-31694F9231D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00-ChinookTracks", "00-ChinookTracks\00-ChinookTracks.csproj", "{F902B997-2C82-49BB-A504-5CECDF1AB6CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-Northwind", "01-Northwind\01-Northwind.csproj", "{C2304D11-F39C-45A5-89A8-752B1A284BB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-HayvanlarGrup", "02-HayvanlarGrup\02-HayvanlarGrup.csproj", "{9728727B-5555-4ECE-8215-17158ED46C39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +49,18 @@ Global
 		{29185933-2F67-4946-A70F-4C762FBD49E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29185933-2F67-4946-A70F-4C762FBD49E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29185933-2F67-4946-A70F-4C762FBD49E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F902B997-2C82-49BB-A504-5CECDF1AB6CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F902B997-2C82-49BB-A504-5CECDF1AB6CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F902B997-2C82-49BB-A504-5CECDF1AB6CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F902B997-2C82-49BB-A504-5CECDF1AB6CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2304D11-F39C-45A5-89A8-752B1A284BB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2304D11-F39C-45A5-89A8-752B1A284BB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2304D11-F39C-45A5-89A8-752B1A284BB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2304D11-F39C-45A5-89A8-752B1A284BB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9728727B-5555-4ECE-8215-17158ED46C39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9728727B-5555-4ECE-8215-17158ED46C39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9728727B-5555-4ECE-8215-17158ED46C39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9728727B-5555-4ECE-8215-17158ED46C39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +71,9 @@ Global
 		{673CAC05-79F7-4C93-AB3F-D48EB69B7A05} = {E828CC33-FB93-43D9-8F28-3C0B97A8CA53}
 		{B8EAF87F-0E52-438F-A697-F20BFFFEB6AD} = {E828CC33-FB93-43D9-8F28-3C0B97A8CA53}
 		{29185933-2F67-4946-A70F-4C762FBD49E5} = {E828CC33-FB93-43D9-8F28-3C0B97A8CA53}
+		{F902B997-2C82-49BB-A504-5CECDF1AB6CB} = {FE10924D-942F-457F-9549-31694F9231D7}
+		{C2304D11-F39C-45A5-89A8-752B1A284BB2} = {FE10924D-942F-457F-9549-31694F9231D7}
+		{9728727B-5555-4ECE-8215-17158ED46C39} = {FE10924D-942F-457F-9549-31694F9231D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {904DA59B-39DC-4148-8AF0-BBDBD73467AF}
