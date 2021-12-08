@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-Northwind", "01-Northwin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-HayvanlarGrup", "02-HayvanlarGrup\02-HayvanlarGrup.csproj", "{9728727B-5555-4ECE-8215-17158ED46C39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-MovieWorld", "03-MovieWorld\03-MovieWorld.csproj", "{4C381755-9D75-44B5-A19F-224D10721DEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{9728727B-5555-4ECE-8215-17158ED46C39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9728727B-5555-4ECE-8215-17158ED46C39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9728727B-5555-4ECE-8215-17158ED46C39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C381755-9D75-44B5-A19F-224D10721DEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C381755-9D75-44B5-A19F-224D10721DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C381755-9D75-44B5-A19F-224D10721DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C381755-9D75-44B5-A19F-224D10721DEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{F902B997-2C82-49BB-A504-5CECDF1AB6CB} = {FE10924D-942F-457F-9549-31694F9231D7}
 		{C2304D11-F39C-45A5-89A8-752B1A284BB2} = {FE10924D-942F-457F-9549-31694F9231D7}
 		{9728727B-5555-4ECE-8215-17158ED46C39} = {FE10924D-942F-457F-9549-31694F9231D7}
+		{4C381755-9D75-44B5-A19F-224D10721DEB} = {FE10924D-942F-457F-9549-31694F9231D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {904DA59B-39DC-4148-8AF0-BBDBD73467AF}
