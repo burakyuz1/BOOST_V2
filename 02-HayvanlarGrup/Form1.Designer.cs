@@ -31,6 +31,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTur = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.chbSahibiVarMi = new System.Windows.Forms.CheckBox();
             this.nmuKutle = new System.Windows.Forms.NumericUpDown();
             this.btnEkle = new System.Windows.Forms.Button();
@@ -45,8 +47,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.grpHayvanlar = new System.Windows.Forms.GroupBox();
             this.dgvHayvanlar = new System.Windows.Forms.DataGridView();
-            this.btnGuncelle = new System.Windows.Forms.Button();
-            this.btnSil = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cinsiyet = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +54,8 @@
             this.DogumTarihi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kutle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tur = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGuncelle = new System.Windows.Forms.Button();
+            this.btnSil = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmuKutle)).BeginInit();
             this.grpHayvanlar.SuspendLayout();
@@ -65,6 +67,8 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtTur);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.chbSahibiVarMi);
             this.groupBox1.Controls.Add(this.nmuKutle);
             this.groupBox1.Controls.Add(this.btnEkle);
@@ -84,10 +88,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hayvan Ekle";
             // 
+            // txtTur
+            // 
+            this.txtTur.Location = new System.Drawing.Point(159, 182);
+            this.txtTur.Name = "txtTur";
+            this.txtTur.Size = new System.Drawing.Size(229, 27);
+            this.txtTur.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(74, 185);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 22);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Tür";
+            // 
             // chbSahibiVarMi
             // 
             this.chbSahibiVarMi.AutoSize = true;
-            this.chbSahibiVarMi.Location = new System.Drawing.Point(243, 200);
+            this.chbSahibiVarMi.Location = new System.Drawing.Point(243, 218);
             this.chbSahibiVarMi.Name = "chbSahibiVarMi";
             this.chbSahibiVarMi.Size = new System.Drawing.Size(145, 26);
             this.chbSahibiVarMi.TabIndex = 20;
@@ -97,14 +117,24 @@
             // nmuKutle
             // 
             this.nmuKutle.DecimalPlaces = 2;
-            this.nmuKutle.Location = new System.Drawing.Point(159, 201);
+            this.nmuKutle.Location = new System.Drawing.Point(159, 219);
+            this.nmuKutle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nmuKutle.Name = "nmuKutle";
             this.nmuKutle.Size = new System.Drawing.Size(58, 27);
             this.nmuKutle.TabIndex = 19;
+            this.nmuKutle.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // btnEkle
             // 
-            this.btnEkle.Location = new System.Drawing.Point(274, 239);
+            this.btnEkle.Location = new System.Drawing.Point(274, 257);
             this.btnEkle.Name = "btnEkle";
             this.btnEkle.Size = new System.Drawing.Size(114, 36);
             this.btnEkle.TabIndex = 12;
@@ -122,7 +152,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(61, 203);
+            this.label5.Location = new System.Drawing.Point(61, 221);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 22);
             this.label5.TabIndex = 16;
@@ -211,6 +241,8 @@
             // 
             // dgvHayvanlar
             // 
+            this.dgvHayvanlar.AllowUserToAddRows = false;
+            this.dgvHayvanlar.AllowUserToDeleteRows = false;
             this.dgvHayvanlar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHayvanlar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvHayvanlar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -226,10 +258,56 @@
             this.dgvHayvanlar.Location = new System.Drawing.Point(3, 23);
             this.dgvHayvanlar.MultiSelect = false;
             this.dgvHayvanlar.Name = "dgvHayvanlar";
+            this.dgvHayvanlar.ReadOnly = true;
             this.dgvHayvanlar.RowHeadersVisible = false;
             this.dgvHayvanlar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHayvanlar.Size = new System.Drawing.Size(652, 291);
             this.dgvHayvanlar.TabIndex = 0;
+            this.dgvHayvanlar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHayvanlar_CellDoubleClick);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Ad
+            // 
+            this.Ad.HeaderText = "AD";
+            this.Ad.Name = "Ad";
+            this.Ad.ReadOnly = true;
+            // 
+            // Cinsiyet
+            // 
+            this.Cinsiyet.HeaderText = "CINSIYET";
+            this.Cinsiyet.Name = "Cinsiyet";
+            this.Cinsiyet.ReadOnly = true;
+            // 
+            // SahibiVarMi
+            // 
+            this.SahibiVarMi.HeaderText = "SAHİP DURUMU";
+            this.SahibiVarMi.Name = "SahibiVarMi";
+            this.SahibiVarMi.ReadOnly = true;
+            this.SahibiVarMi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SahibiVarMi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // DogumTarihi
+            // 
+            this.DogumTarihi.HeaderText = "DOĞUM TARİHİ";
+            this.DogumTarihi.Name = "DogumTarihi";
+            this.DogumTarihi.ReadOnly = true;
+            // 
+            // Kutle
+            // 
+            this.Kutle.HeaderText = "KÜTLE";
+            this.Kutle.Name = "Kutle";
+            this.Kutle.ReadOnly = true;
+            // 
+            // Tur
+            // 
+            this.Tur.HeaderText = "TÜR";
+            this.Tur.Name = "Tur";
+            this.Tur.ReadOnly = true;
             // 
             // btnGuncelle
             // 
@@ -241,6 +319,7 @@
             this.btnGuncelle.TabIndex = 12;
             this.btnGuncelle.Text = "GÜNCELLE";
             this.btnGuncelle.UseVisualStyleBackColor = false;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // btnSil
             // 
@@ -252,43 +331,7 @@
             this.btnSil.TabIndex = 12;
             this.btnSil.Text = "SİL";
             this.btnSil.UseVisualStyleBackColor = false;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            // 
-            // Ad
-            // 
-            this.Ad.HeaderText = "AD";
-            this.Ad.Name = "Ad";
-            // 
-            // Cinsiyet
-            // 
-            this.Cinsiyet.HeaderText = "CINSIYET";
-            this.Cinsiyet.Name = "Cinsiyet";
-            // 
-            // SahibiVarMi
-            // 
-            this.SahibiVarMi.HeaderText = "SAHİP DURUMU";
-            this.SahibiVarMi.Name = "SahibiVarMi";
-            this.SahibiVarMi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SahibiVarMi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // DogumTarihi
-            // 
-            this.DogumTarihi.HeaderText = "DOĞUM TARİHİ";
-            this.DogumTarihi.Name = "DogumTarihi";
-            // 
-            // Kutle
-            // 
-            this.Kutle.HeaderText = "KÜTLE";
-            this.Kutle.Name = "Kutle";
-            // 
-            // Tur
-            // 
-            this.Tur.HeaderText = "TÜR";
-            this.Tur.Name = "Tur";
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // Form1
             // 
@@ -339,6 +382,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DogumTarihi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kutle;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tur;
+        private System.Windows.Forms.TextBox txtTur;
+        private System.Windows.Forms.Label label1;
     }
 }
 
