@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Boost11EkimDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bolgeler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="BolgeAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hobiler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IletisimBilgileri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="15" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="400" />
+        </EntityType>
+        <EntityType Name="OgrenciHobi">
+          <Key>
+            <PropertyRef Name="OgrenciId" />
+            <PropertyRef Name="HobiId" />
+          </Key>
+          <Property Name="OgrenciId" Type="int" Nullable="false" />
+          <Property Name="HobiId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ogrenciler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cinsiyet" Type="nvarchar" MaxLength="1" />
+          <Property Name="DogumTarihi" Type="date" />
+          <Property Name="UniversiteId" Type="int" />
+          <Property Name="DogumYeriId" Type="int" />
+          <Property Name="LiderId" Type="int" />
+        </EntityType>
+        <EntityType Name="Sehirler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="BolgeId" Type="int" Nullable="false" />
+          <Property Name="SehirAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nufus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Universiteler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__IletisimBilg__Id__35BCFE0A">
+          <End Role="Ogrenciler" Type="Self.Ogrenciler" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="IletisimBilgileri" Type="Self.IletisimBilgileri" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Ogrenciler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IletisimBilgileri">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OgrenciHo__HobiI__32E0915F">
+          <End Role="Hobiler" Type="Self.Hobiler" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OgrenciHobi" Type="Self.OgrenciHobi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hobiler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OgrenciHobi">
+              <PropertyRef Name="HobiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OgrenciHo__Ogren__31EC6D26">
+          <End Role="Ogrenciler" Type="Self.Ogrenciler" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OgrenciHobi" Type="Self.OgrenciHobi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ogrenciler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OgrenciHobi">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ogrencile__Dogum__2E1BDC42">
+          <End Role="Sehirler" Type="Self.Sehirler" Multiplicity="0..1" />
+          <End Role="Ogrenciler" Type="Self.Ogrenciler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sehirler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ogrenciler">
+              <PropertyRef Name="DogumYeriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ogrencile__Lider__2F10007B">
+          <End Role="Ogrenciler" Type="Self.Ogrenciler" Multiplicity="0..1" />
+          <End Role="Ogrenciler1" Type="Self.Ogrenciler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ogrenciler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ogrenciler1">
+              <PropertyRef Name="LiderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ogrencile__Unive__2D27B809">
+          <End Role="Universiteler" Type="Self.Universiteler" Multiplicity="0..1" />
+          <End Role="Ogrenciler" Type="Self.Ogrenciler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Universiteler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ogrenciler">
+              <PropertyRef Name="UniversiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sehirler__BolgeI__286302EC">
+          <End Role="Bolgeler" Type="Self.Bolgeler" Multiplicity="1" />
+          <End Role="Sehirler" Type="Self.Sehirler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bolgeler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sehirler">
+              <PropertyRef Name="BolgeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Boost11EkimDbModelStoreContainer">
+          <EntitySet Name="Bolgeler" EntityType="Self.Bolgeler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hobiler" EntityType="Self.Hobiler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IletisimBilgileri" EntityType="Self.IletisimBilgileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OgrenciHobi" EntityType="Self.OgrenciHobi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ogrenciler" EntityType="Self.Ogrenciler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sehirler" EntityType="Self.Sehirler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Universiteler" EntityType="Self.Universiteler" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__IletisimBilg__Id__35BCFE0A" Association="Self.FK__IletisimBilg__Id__35BCFE0A">
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+            <End Role="IletisimBilgileri" EntitySet="IletisimBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OgrenciHo__HobiI__32E0915F" Association="Self.FK__OgrenciHo__HobiI__32E0915F">
+            <End Role="Hobiler" EntitySet="Hobiler" />
+            <End Role="OgrenciHobi" EntitySet="OgrenciHobi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OgrenciHo__Ogren__31EC6D26" Association="Self.FK__OgrenciHo__Ogren__31EC6D26">
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+            <End Role="OgrenciHobi" EntitySet="OgrenciHobi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ogrencile__Dogum__2E1BDC42" Association="Self.FK__Ogrencile__Dogum__2E1BDC42">
+            <End Role="Sehirler" EntitySet="Sehirler" />
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ogrencile__Lider__2F10007B" Association="Self.FK__Ogrencile__Lider__2F10007B">
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+            <End Role="Ogrenciler1" EntitySet="Ogrenciler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ogrencile__Unive__2D27B809" Association="Self.FK__Ogrencile__Unive__2D27B809">
+            <End Role="Universiteler" EntitySet="Universiteler" />
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sehirler__BolgeI__286302EC" Association="Self.FK__Sehirler__BolgeI__286302EC">
+            <End Role="Bolgeler" EntitySet="Bolgeler" />
+            <End Role="Sehirler" EntitySet="Sehirler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Boost11EkimDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bolge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="BolgeAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Sehirler" Relationship="Self.FK__Sehirler__BolgeI__286302EC" FromRole="Bolgeler" ToRole="Sehirler" />
+        </EntityType>
+        <EntityType Name="Hobi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ogrenciler" Relationship="Self.OgrenciHobi" FromRole="Hobiler" ToRole="Ogrenciler" />
+        </EntityType>
+        <EntityType Name="IletisimBilgileri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ogrenciler" Relationship="Self.FK__IletisimBilg__Id__35BCFE0A" FromRole="IletisimBilgileri" ToRole="Ogrenciler" />
+        </EntityType>
+        <EntityType Name="Ogrenci">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cinsiyet" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
+          <Property Name="UniversiteId" Type="Int32" />
+          <Property Name="DogumYeriId" Type="Int32" />
+          <Property Name="LiderId" Type="Int32" />
+          <NavigationProperty Name="IletisimBilgileri" Relationship="Self.FK__IletisimBilg__Id__35BCFE0A" FromRole="Ogrenciler" ToRole="IletisimBilgileri" />
+          <NavigationProperty Name="Sehirler" Relationship="Self.FK__Ogrencile__Dogum__2E1BDC42" FromRole="Ogrenciler" ToRole="Sehirler" />
+          <NavigationProperty Name="Ogrenciler1" Relationship="Self.FK__Ogrencile__Lider__2F10007B" FromRole="Ogrenciler" ToRole="Ogrenciler1" />
+          <NavigationProperty Name="Ogrenciler2" Relationship="Self.FK__Ogrencile__Lider__2F10007B" FromRole="Ogrenciler1" ToRole="Ogrenciler" />
+          <NavigationProperty Name="Universiteler" Relationship="Self.FK__Ogrencile__Unive__2D27B809" FromRole="Ogrenciler" ToRole="Universiteler" />
+          <NavigationProperty Name="Hobiler" Relationship="Self.OgrenciHobi" FromRole="Ogrenciler" ToRole="Hobiler" />
+        </EntityType>
+        <EntityType Name="Sehir">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="BolgeId" Type="Int32" Nullable="false" />
+          <Property Name="SehirAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nufus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bolgeler" Relationship="Self.FK__Sehirler__BolgeI__286302EC" FromRole="Sehirler" ToRole="Bolgeler" />
+          <NavigationProperty Name="Ogrenciler" Relationship="Self.FK__Ogrencile__Dogum__2E1BDC42" FromRole="Sehirler" ToRole="Ogrenciler" />
+        </EntityType>
+        <EntityType Name="Universite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ogrenciler" Relationship="Self.FK__Ogrencile__Unive__2D27B809" FromRole="Universiteler" ToRole="Ogrenciler" />
+        </EntityType>
+        <Association Name="FK__Sehirler__BolgeI__286302EC">
+          <End Role="Bolgeler" Type="Boost11EkimDbModel.Bolge" Multiplicity="1" />
+          <End Role="Sehirler" Type="Boost11EkimDbModel.Sehir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bolgeler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sehirler">
+              <PropertyRef Name="BolgeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IletisimBilg__Id__35BCFE0A">
+          <End Role="Ogrenciler" Type="Boost11EkimDbModel.Ogrenci" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="IletisimBilgileri" Type="Self.IletisimBilgileri" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Ogrenciler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IletisimBilgileri">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ogrencile__Dogum__2E1BDC42">
+          <End Role="Sehirler" Type="Boost11EkimDbModel.Sehir" Multiplicity="0..1" />
+          <End Role="Ogrenciler" Type="Boost11EkimDbModel.Ogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sehirler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ogrenciler">
+              <PropertyRef Name="DogumYeriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ogrencile__Lider__2F10007B">
+          <End Role="Ogrenciler" Type="Boost11EkimDbModel.Ogrenci" Multiplicity="0..1" />
+          <End Role="Ogrenciler1" Type="Boost11EkimDbModel.Ogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ogrenciler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ogrenciler1">
+              <PropertyRef Name="LiderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ogrencile__Unive__2D27B809">
+          <End Role="Universiteler" Type="Boost11EkimDbModel.Universite" Multiplicity="0..1" />
+          <End Role="Ogrenciler" Type="Boost11EkimDbModel.Ogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Universiteler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ogrenciler">
+              <PropertyRef Name="UniversiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OgrenciHobi">
+          <End Role="Hobiler" Type="Boost11EkimDbModel.Hobi" Multiplicity="*" />
+          <End Role="Ogrenciler" Type="Boost11EkimDbModel.Ogrenci" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Boost11EkimDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bolgeler" EntityType="Boost11EkimDbModel.Bolge" />
+          <EntitySet Name="Hobiler" EntityType="Boost11EkimDbModel.Hobi" />
+          <EntitySet Name="IletisimBilgileri" EntityType="Self.IletisimBilgileri" />
+          <EntitySet Name="Ogrenciler" EntityType="Boost11EkimDbModel.Ogrenci" />
+          <EntitySet Name="Sehirler" EntityType="Boost11EkimDbModel.Sehir" />
+          <EntitySet Name="Universiteler" EntityType="Boost11EkimDbModel.Universite" />
+          <AssociationSet Name="FK__Sehirler__BolgeI__286302EC" Association="Self.FK__Sehirler__BolgeI__286302EC">
+            <End Role="Bolgeler" EntitySet="Bolgeler" />
+            <End Role="Sehirler" EntitySet="Sehirler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IletisimBilg__Id__35BCFE0A" Association="Self.FK__IletisimBilg__Id__35BCFE0A">
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+            <End Role="IletisimBilgileri" EntitySet="IletisimBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ogrencile__Dogum__2E1BDC42" Association="Self.FK__Ogrencile__Dogum__2E1BDC42">
+            <End Role="Sehirler" EntitySet="Sehirler" />
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ogrencile__Lider__2F10007B" Association="Self.FK__Ogrencile__Lider__2F10007B">
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+            <End Role="Ogrenciler1" EntitySet="Ogrenciler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ogrencile__Unive__2D27B809" Association="Self.FK__Ogrencile__Unive__2D27B809">
+            <End Role="Universiteler" EntitySet="Universiteler" />
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+          </AssociationSet>
+          <AssociationSet Name="OgrenciHobi" Association="Self.OgrenciHobi">
+            <End Role="Hobiler" EntitySet="Hobiler" />
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Boost11EkimDbModelStoreContainer" CdmEntityContainer="Boost11EkimDbEntities">
+          <EntitySetMapping Name="Bolgeler">
+            <EntityTypeMapping TypeName="Boost11EkimDbModel.Bolge">
+              <MappingFragment StoreEntitySet="Bolgeler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BolgeAd" ColumnName="BolgeAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hobiler">
+            <EntityTypeMapping TypeName="Boost11EkimDbModel.Hobi">
+              <MappingFragment StoreEntitySet="Hobiler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IletisimBilgileri">
+            <EntityTypeMapping TypeName="Boost11EkimDbModel.IletisimBilgileri">
+              <MappingFragment StoreEntitySet="IletisimBilgileri">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ogrenciler">
+            <EntityTypeMapping TypeName="Boost11EkimDbModel.Ogrenci">
+              <MappingFragment StoreEntitySet="Ogrenciler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="UniversiteId" ColumnName="UniversiteId" />
+                <ScalarProperty Name="DogumYeriId" ColumnName="DogumYeriId" />
+                <ScalarProperty Name="LiderId" ColumnName="LiderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sehirler">
+            <EntityTypeMapping TypeName="Boost11EkimDbModel.Sehir">
+              <MappingFragment StoreEntitySet="Sehirler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BolgeId" ColumnName="BolgeId" />
+                <ScalarProperty Name="SehirAd" ColumnName="SehirAd" />
+                <ScalarProperty Name="Nufus" ColumnName="Nufus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Universiteler">
+            <EntityTypeMapping TypeName="Boost11EkimDbModel.Universite">
+              <MappingFragment StoreEntitySet="Universiteler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="OgrenciHobi" TypeName="Boost11EkimDbModel.OgrenciHobi" StoreEntitySet="OgrenciHobi">
+            <EndProperty Name="Hobiler">
+              <ScalarProperty Name="Id" ColumnName="HobiId" />
+            </EndProperty>
+            <EndProperty Name="Ogrenciler">
+              <ScalarProperty Name="Id" ColumnName="OgrenciId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
