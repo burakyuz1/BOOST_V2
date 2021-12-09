@@ -125,11 +125,13 @@ namespace _02_HayvanlarGrup
             fu.ShowDialog();
             HayvanlariListele();
         }
+
+  
         private void dgvHayvanlar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
             int hayvanId = (int)dgvHayvanlar.SelectedRows[0].Cells[0].Value;
-            int yiyecekId = (int)cmd.ExecuteScalar();
+            int yiyecekId = 0;
             cmd = new SqlCommand("Select top 1 YiyecekId from Hayvanlar WHERE Id = @p ", con);
             cmd.Parameters.AddWithValue("@p", hayvanId);
             var dr = cmd.ExecuteReader();
