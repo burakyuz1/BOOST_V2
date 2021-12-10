@@ -28,7 +28,7 @@ namespace _02_HayvanlarGrup
         private void HayvanlariListele()
         {
             dgvHayvanlar.Rows.Clear();
-            cmd = new SqlCommand("SELECT * FROM Hayvanlar ORDER BY Id", con);
+            cmd = new SqlCommand("SELECT * FROM Hayvanlar", con);
             dr = cmd.ExecuteReader();
 
             while (dr.Read())
@@ -85,6 +85,9 @@ namespace _02_HayvanlarGrup
             MessageBox.Show("Hayvan Eklendi.");
             HayvanlariListele();
             AlanlariSifirla();
+            dgvHayvanlar.FirstDisplayedScrollingRowIndex = dgvHayvanlar.RowCount - 1;
+            dgvHayvanlar.Rows[dgvHayvanlar.Rows.Count - 1].Selected = true;
+
         }
 
         private void AlanlariSifirla()
@@ -124,9 +127,11 @@ namespace _02_HayvanlarGrup
             FormUpdate fu = new FormUpdate(hayvanId, con);
             fu.ShowDialog();
             HayvanlariListele();
+            dgvHayvanlar.FirstDisplayedScrollingRowIndex = hayvanId - 1;
+            dgvHayvanlar.Rows[hayvanId - 1].Selected = true;
         }
 
-  
+
         private void dgvHayvanlar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
