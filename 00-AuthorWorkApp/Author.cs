@@ -17,7 +17,7 @@ namespace _00_AuthorWorkApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Author()
         {
-            this.Works = new HashSet<Work>();
+            Works = new HashSet<Work>();
         }
     
         public int AuthorId { get; set; }
