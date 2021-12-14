@@ -30,7 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtWork = new System.Windows.Forms.TextBox();
             this.lstWorks = new System.Windows.Forms.ListBox();
             this.pcbAuthor = new System.Windows.Forms.PictureBox();
             this.cmbAuthors = new System.Windows.Forms.ComboBox();
@@ -59,6 +59,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.pcbAuthorPicture = new System.Windows.Forms.PictureBox();
+            this.chkSeeImage = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbAuthor)).BeginInit();
@@ -66,6 +68,7 @@
             this.grpAuthor.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.grpAddWork.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbAuthorPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -82,7 +85,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.txtWork);
             this.tabPage1.Controls.Add(this.lstWorks);
             this.tabPage1.Controls.Add(this.pcbAuthor);
             this.tabPage1.Controls.Add(this.cmbAuthors);
@@ -97,28 +100,32 @@
             this.tabPage1.Text = "Main Page";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtWork
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtWork.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(465, 248);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(693, 366);
-            this.textBox1.TabIndex = 4;
+            this.txtWork.Font = new System.Drawing.Font("Showcard Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtWork.Location = new System.Drawing.Point(465, 248);
+            this.txtWork.Multiline = true;
+            this.txtWork.Name = "txtWork";
+            this.txtWork.ReadOnly = true;
+            this.txtWork.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtWork.Size = new System.Drawing.Size(693, 366);
+            this.txtWork.TabIndex = 4;
             // 
             // lstWorks
             // 
             this.lstWorks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstWorks.DisplayMember = "Title";
             this.lstWorks.FormattingEnabled = true;
             this.lstWorks.ItemHeight = 24;
             this.lstWorks.Location = new System.Drawing.Point(465, 52);
             this.lstWorks.Name = "lstWorks";
             this.lstWorks.Size = new System.Drawing.Size(693, 148);
             this.lstWorks.TabIndex = 3;
+            this.lstWorks.SelectedIndexChanged += new System.EventHandler(this.lstWorks_SelectedIndexChanged);
             // 
             // pcbAuthor
             // 
@@ -127,7 +134,6 @@
             this.pcbAuthor.Location = new System.Drawing.Point(26, 95);
             this.pcbAuthor.Name = "pcbAuthor";
             this.pcbAuthor.Size = new System.Drawing.Size(395, 477);
-            this.pcbAuthor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pcbAuthor.TabIndex = 2;
             this.pcbAuthor.TabStop = false;
             // 
@@ -176,6 +182,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.pcbAuthorPicture);
             this.tabPage2.Controls.Add(this.lstAuthors);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.grpAuthor);
@@ -212,6 +219,7 @@
             // 
             // grpAuthor
             // 
+            this.grpAuthor.Controls.Add(this.chkSeeImage);
             this.grpAuthor.Controls.Add(this.btnAddAuthor);
             this.grpAuthor.Controls.Add(this.btnCancel);
             this.grpAuthor.Controls.Add(this.txtImageLocation);
@@ -220,7 +228,7 @@
             this.grpAuthor.Controls.Add(this.label4);
             this.grpAuthor.Location = new System.Drawing.Point(9, 7);
             this.grpAuthor.Name = "grpAuthor";
-            this.grpAuthor.Size = new System.Drawing.Size(533, 284);
+            this.grpAuthor.Size = new System.Drawing.Size(602, 284);
             this.grpAuthor.TabIndex = 0;
             this.grpAuthor.TabStop = false;
             this.grpAuthor.Text = "Add Author";
@@ -252,6 +260,8 @@
             this.txtImageLocation.Name = "txtImageLocation";
             this.txtImageLocation.Size = new System.Drawing.Size(250, 29);
             this.txtImageLocation.TabIndex = 1;
+            this.txtImageLocation.TextChanged += new System.EventHandler(this.txtImageLocation_TextChanged);
+            this.txtImageLocation.Leave += new System.EventHandler(this.txtImageLocation_Leave);
             // 
             // txtAuthorName
             // 
@@ -302,6 +312,8 @@
             this.lstWorkPanel.Name = "lstWorkPanel";
             this.lstWorkPanel.Size = new System.Drawing.Size(571, 556);
             this.lstWorkPanel.TabIndex = 0;
+            this.lstWorkPanel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstWorkPanel_KeyDown);
+            this.lstWorkPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstWorkPanel_MouseDoubleClick);
             // 
             // grpAddWork
             // 
@@ -330,6 +342,8 @@
             this.btnCancelWork.TabIndex = 4;
             this.btnCancelWork.Text = "Cancel";
             this.btnCancelWork.UseVisualStyleBackColor = true;
+            this.btnCancelWork.Visible = false;
+            this.btnCancelWork.Click += new System.EventHandler(this.btnCancelWork_Click);
             // 
             // btnAddWork
             // 
@@ -401,6 +415,25 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Works";
             // 
+            // pcbAuthorPicture
+            // 
+            this.pcbAuthorPicture.Location = new System.Drawing.Point(676, 19);
+            this.pcbAuthorPicture.Name = "pcbAuthorPicture";
+            this.pcbAuthorPicture.Size = new System.Drawing.Size(354, 272);
+            this.pcbAuthorPicture.TabIndex = 3;
+            this.pcbAuthorPicture.TabStop = false;
+            // 
+            // chkSeeImage
+            // 
+            this.chkSeeImage.AutoSize = true;
+            this.chkSeeImage.Location = new System.Drawing.Point(476, 114);
+            this.chkSeeImage.Name = "chkSeeImage";
+            this.chkSeeImage.Size = new System.Drawing.Size(120, 28);
+            this.chkSeeImage.TabIndex = 3;
+            this.chkSeeImage.Text = "See Image";
+            this.chkSeeImage.UseVisualStyleBackColor = true;
+            this.chkSeeImage.CheckedChanged += new System.EventHandler(this.chkSeeImage_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -423,6 +456,7 @@
             this.tabPage3.PerformLayout();
             this.grpAddWork.ResumeLayout(false);
             this.grpAddWork.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbAuthorPicture)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -431,7 +465,7 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtWork;
         private System.Windows.Forms.ListBox lstWorks;
         private System.Windows.Forms.PictureBox pcbAuthor;
         private System.Windows.Forms.ComboBox cmbAuthors;
@@ -460,6 +494,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnCancelWork;
         private System.Windows.Forms.Button btnAddWork;
+        private System.Windows.Forms.PictureBox pcbAuthorPicture;
+        private System.Windows.Forms.CheckBox chkSeeImage;
     }
 }
 

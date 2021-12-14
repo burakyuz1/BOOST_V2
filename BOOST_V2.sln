@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31919.166
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20211207-DataAccessAdoNet", "20211207-DataAccessAdoNet", "{E828CC33-FB93-43D9-8F28-3C0B97A8CA53}"
 EndProject
@@ -52,6 +52,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-TakimEfCf", "01-TakimEfCf\01-TakimEfCf.csproj", "{C0A8434A-837E-40A4-9FDD-D502AFF74FED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-SingerApp", "02-SingerApp\02-SingerApp.csproj", "{A1098B8D-BA75-400B-A520-4E03A8E51352}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20211214-CodeFirst", "20211214-CodeFirst", "{5495D0A5-169F-46AF-81E0-7D23FD017098}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00-HatıraDuvari", "00-HatıraDuvari\00-HatıraDuvari.csproj", "{D756D657-DBCA-412A-981E-534E074EF25B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -139,6 +143,10 @@ Global
 		{A1098B8D-BA75-400B-A520-4E03A8E51352}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1098B8D-BA75-400B-A520-4E03A8E51352}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1098B8D-BA75-400B-A520-4E03A8E51352}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D756D657-DBCA-412A-981E-534E074EF25B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D756D657-DBCA-412A-981E-534E074EF25B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D756D657-DBCA-412A-981E-534E074EF25B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D756D657-DBCA-412A-981E-534E074EF25B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,6 +172,7 @@ Global
 		{928B1B61-69BC-4BFE-9CC6-2C2E1B3F0E88} = {DEA01080-890F-4C94-8FF9-960D2D2D1107}
 		{C0A8434A-837E-40A4-9FDD-D502AFF74FED} = {DEA01080-890F-4C94-8FF9-960D2D2D1107}
 		{A1098B8D-BA75-400B-A520-4E03A8E51352} = {DEA01080-890F-4C94-8FF9-960D2D2D1107}
+		{D756D657-DBCA-412A-981E-534E074EF25B} = {5495D0A5-169F-46AF-81E0-7D23FD017098}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {904DA59B-39DC-4148-8AF0-BBDBD73467AF}

@@ -101,7 +101,6 @@ namespace _00_AuthorWorkApp
                     db.SaveChanges();
                     AuthorAdd();
                     GetAuthors();
-
                 }
             }
         }
@@ -110,6 +109,8 @@ namespace _00_AuthorWorkApp
         {
             txtAuthorName.Clear();
             txtImageLocation.Clear();
+            pcbAuthorPicture.ImageLocation = null;
+            chkSeeImage.Checked = false;
         }
 
         private void cmbAuthors_SelectedIndexChanged(object sender, EventArgs e)
@@ -118,10 +119,14 @@ namespace _00_AuthorWorkApp
             if (cmbAuthors.SelectedIndex != 0)
             {
                 Author author = (Author)cmbAuthors.SelectedItem;
-                int authorId = author.AuthorId;
-
+                //int authorId = author.AuthorId;
+                lstWorks.DataSource = author.Works.ToList();
             }
-            GetWorks();
+            else
+            {
+                lstWorks.DataSource = db.Works.ToList();
+            }
+            txtWork.Text = "";
         }
 
         private void lstAuthors_KeyDown(object sender, KeyEventArgs e)
@@ -164,8 +169,17 @@ namespace _00_AuthorWorkApp
                     WorkPanelClear();
 
                 }
-                else if (btnAddWork.Text == "Update")
+                else if (btnAddWork.Text == "Save")
                 {
+                    Work work = (Work)lstWorkPanel.SelectedItem;
+                    if (work == null) return;
+                    work.Title = txtTitleWork.Text.Trim();
+                    work.Content = txtContentWork.Text.Trim();
+                    work.Author = (Author)cmbWorkAuthors.SelectedItem;
+                    db.SaveChanges();
+                    GetWorks();
+                    WorkPanelClear();
+                    WorkUpdateChangeButtons2();
 
                 }
             }
@@ -211,6 +225,89 @@ namespace _00_AuthorWorkApp
             btnCancel.Hide();
             btnAddAuthor.Text = "Add";
             ClearAuthorPanel();
+        }
+
+        private void lstWorkPanel_KeyDown(object sender, KeyEventArgs e)
+        {
+            Work work = (Work)lstWorkPanel.SelectedItem;
+            if (work == null) return;
+
+            DialogResult dr = MessageBox.Show($"Are you sure to delete {work.Title} ?", "Warning", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes && e.KeyCode == Keys.Delete)
+            {
+
+                db.Works.Remove(work);
+                db.SaveChanges();
+                GetWorks();
+
+            }
+
+
+        }
+
+        private void lstWorkPanel_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            WorkUpdateChangeButtons();
+        }
+
+        private void WorkUpdateChangeButtons()
+        {
+            Work updatedWork = (Work)lstWorkPanel.SelectedItem;
+            if (updatedWork == null) return;
+            txtTitleWork.Text = updatedWork.Title;
+            txtContentWork.Text = updatedWork.Content;
+            cmbWorkAuthors.SelectedItem = updatedWork.Author;
+            btnCancelWork.Show();
+            btnAddWork.Text = "Save";
+        }
+
+        private void btnCancelWork_Click(object sender, EventArgs e)
+        {
+            WorkUpdateChangeButtons2();
+
+        }
+
+        private void WorkUpdateChangeButtons2()
+        {
+            btnCancelWork.Hide();
+            btnAddWork.Text = "Add";
+            WorkPanelClear();
+        }
+
+        private void lstWorks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Work work = (Work)lstWorks.SelectedItem;
+            if (work == null)
+            {
+                txtWork.Text = "";
+                return;
+            }
+            txtWork.Text = work.Title + "\r\n" + work.Content;
+
+
+
+        }
+
+        private void txtImageLocation_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtImageLocation_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkSeeImage_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSeeImage.Checked)
+            {
+                pcbAuthorPicture.ImageLocation = txtImageLocation.Text;
+            }
+            else
+            {
+                pcbAuthorPicture.ImageLocation = null;
+            }
         }
     }
 }
