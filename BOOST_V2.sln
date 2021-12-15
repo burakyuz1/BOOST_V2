@@ -63,6 +63,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20211215-Ef-Cf", "20211215-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00-CareTaker", "00-CareTaker\00-CareTaker.csproj", "{6F7CB3AC-798D-49F0-998F-E9775D8099DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-MigrationExcercises", "01-MigrationExcercises\01-MigrationExcercises.csproj", "{7AC1202D-A208-4F71-87E8-F7B7C6B7AABB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +163,10 @@ Global
 		{6F7CB3AC-798D-49F0-998F-E9775D8099DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F7CB3AC-798D-49F0-998F-E9775D8099DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F7CB3AC-798D-49F0-998F-E9775D8099DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC1202D-A208-4F71-87E8-F7B7C6B7AABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC1202D-A208-4F71-87E8-F7B7C6B7AABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC1202D-A208-4F71-87E8-F7B7C6B7AABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC1202D-A208-4F71-87E8-F7B7C6B7AABB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -189,6 +195,7 @@ Global
 		{D756D657-DBCA-412A-981E-534E074EF25B} = {5495D0A5-169F-46AF-81E0-7D23FD017098}
 		{D2566D07-CE1E-46AC-8BC9-E5AD004A331F} = {5495D0A5-169F-46AF-81E0-7D23FD017098}
 		{6F7CB3AC-798D-49F0-998F-E9775D8099DE} = {8EC4750A-8E4D-4788-834C-8ACC8552D155}
+		{7AC1202D-A208-4F71-87E8-F7B7C6B7AABB} = {8EC4750A-8E4D-4788-834C-8ACC8552D155}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {904DA59B-39DC-4148-8AF0-BBDBD73467AF}

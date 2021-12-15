@@ -36,13 +36,14 @@
             this.dgvMovies = new System.Windows.Forms.DataGridView();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovies)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 9);
+            this.label1.Location = new System.Drawing.Point(28, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 24);
@@ -65,7 +66,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbGenres.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGenres.FormattingEnabled = true;
-            this.cmbGenres.Location = new System.Drawing.Point(32, 36);
+            this.cmbGenres.Location = new System.Drawing.Point(32, 45);
             this.cmbGenres.Name = "cmbGenres";
             this.cmbGenres.Size = new System.Drawing.Size(125, 32);
             this.cmbGenres.TabIndex = 2;
@@ -89,9 +90,9 @@
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(253, 477);
+            this.btnUpdate.Location = new System.Drawing.Point(313, 477);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(183, 41);
+            this.btnUpdate.Size = new System.Drawing.Size(123, 41);
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -102,17 +103,29 @@
             this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNew.Location = new System.Drawing.Point(32, 477);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(183, 41);
+            this.btnNew.Size = new System.Drawing.Size(123, 41);
             this.btnNew.TabIndex = 5;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.Location = new System.Drawing.Point(173, 477);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(123, 41);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 540);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.dgvMovies);
@@ -137,6 +150,7 @@
         private System.Windows.Forms.DataGridView dgvMovies;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 

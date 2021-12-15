@@ -23,7 +23,7 @@ namespace _01_MovieApp_CF_ManyToMany
             InitializeComponent();
             clbGenres.DataSource = db.Genres.OrderBy(x => x.Name).ToList();
             clbGenres.DisplayMember = "Name";
-            if (movie != null)
+            if (movie.Id > 0)
             {
                 Text = "Editing: \"" + movie.Title + "\"";
                 txtTitle.Text = movie.Title;
@@ -61,26 +61,21 @@ namespace _01_MovieApp_CF_ManyToMany
                 MessageBox.Show("You can not pass title empty!");
                 return;
             }
-            if (movie != null)
+            if (clbGenres.SelectedItems.Count == 0)
             {
-                movie.Title = title;
-                movie.Year = year;
-                movie.Rating = rating;
-                movie.Genres.Clear();
-                foreach (Genre genre in clbGenres.CheckedItems)
-                    movie.Genres.Add(genre);
+                MessageBox.Show("You must choose at least 1 genre");
+                return;
             }
-            else
-            {
-                Movie newMovie = new Movie()
-                {
-                    Title = title,
-                    Year = year,
-                    Rating = rating,
-                    Genres = clbGenres.CheckedItems.Cast<Genre>().ToList()
-                };
-                db.Movies.Add(newMovie);
-            }
+            movie.Title = title;
+            movie.Year = year;
+            movie.Rating = rating;
+            movie.Genres.Clear();
+            foreach (Genre genre in clbGenres.CheckedItems)
+                movie.Genres.Add(genre);
+
+            if (movie.Id == 0)
+                db.Movies.Add(movie);
+
             db.SaveChanges();
             DialogResult = DialogResult.OK;
 

@@ -124,9 +124,9 @@ namespace _01_MovieApp_CF_ManyToMany
                     Genres = string.Join(", ", m.Genres.Select(g => g.Name))
                 }
                 ).ToList();
-            if(selectedMovie != null)
+            if (selectedMovie != null)
                 foreach (DataGridViewRow row in dgvMovies.Rows)
-                    if ((int)row.Cells[0].Value == selectedMovie.Id )
+                    if ((int)row.Cells[0].Value == selectedMovie.Id)
                         row.Selected = true;
         }
 
@@ -136,7 +136,7 @@ namespace _01_MovieApp_CF_ManyToMany
                 return;
 
 
-            
+
             int id = (int)dgvMovies.SelectedRows[0].Cells[0].Value;
             Movie movie = db.Movies.Find(id);
             //first or default / where kullanabilirdik.
@@ -146,20 +146,41 @@ namespace _01_MovieApp_CF_ManyToMany
 
 
             DialogResult dr = new EditMovieForm(db, movie).ShowDialog();
-           
+                selectedMovie = movie;
+                selectedGenre = movie.Genres.FirstOrDefault();
+
             if (dr == DialogResult.OK)
+            {
+                if (!movie.Genres.Contains(selectedGenre))
+                    selectedGenre = movie.Genres.FirstOrDefault();
                 LoadGenres();
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            Movie newMovie = new Movie();// buradan devam
+            Movie newMovie = new Movie(){ Genres = new List<Genre>()};// buradan devam
             DialogResult dr = new EditMovieForm(db, newMovie).ShowDialog();
 
             if (dr == DialogResult.OK)
             {
+                selectedGenre = newMovie.Genres.FirstOrDefault();
+                selectedMovie = newMovie;
                 LoadGenres();
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvMovies.SelectedRows.Count == 0)
+                return;
+            int id = (int)dgvMovies.SelectedRows[0].Cells[0].Value;
+            Movie movie = db.Movies.Find(id);
+            db.Movies.Remove(movie);
+            db.SaveChanges();
+            selectedGenre = (Genre)cmbGenres.SelectedItem;
+            LoadGenres();
+        }
+
     }
 }

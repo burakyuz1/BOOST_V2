@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\BURAKDEV\Desktop\Ba\v2\02-NorthwindDbFirst2\NorthwindModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\burak.akyuz\Source\Repos\burakyuz1\BOOST_V2\02-NorthwindDbFirst2\NorthwindModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
