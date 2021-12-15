@@ -31,6 +31,7 @@
             this.txtHatıraIcerik = new System.Windows.Forms.TextBox();
             this.btnHatiraEkle = new System.Windows.Forms.Button();
             this.pnlHatiralar = new System.Windows.Forms.Panel();
+            this.btnSil = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtHatıraIcerik
@@ -60,16 +61,27 @@
             this.pnlHatiralar.Size = new System.Drawing.Size(481, 343);
             this.pnlHatiralar.TabIndex = 5;
             // 
+            // btnSil
+            // 
+            this.btnSil.Location = new System.Drawing.Point(191, 324);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(108, 32);
+            this.btnSil.TabIndex = 6;
+            this.btnSil.Text = "button1";
+            this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 384);
+            this.Controls.Add(this.btnSil);
             this.Controls.Add(this.pnlHatiralar);
             this.Controls.Add(this.btnHatiraEkle);
             this.Controls.Add(this.txtHatıraIcerik);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -81,6 +93,7 @@
         private System.Windows.Forms.TextBox txtHatıraIcerik;
         private System.Windows.Forms.Button btnHatiraEkle;
         private System.Windows.Forms.Panel pnlHatiralar;
+        private System.Windows.Forms.Button btnSil;
     }
 }
 

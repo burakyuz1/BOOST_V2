@@ -67,5 +67,24 @@ namespace _00_HatıraDuvari
         {
             pnlHatiralar.Controls.Add(txt);
         }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            //cRaZyBoY06
+            List<Hatira> hatiras = db.Hatiralar.ToList();
+            foreach (var item in hatiras)
+            {
+                string crazy = "cRaZyBoY06";
+                if (item.Icerik == crazy)
+                {
+                    hatiras.Remove(item);
+                }
+            }
+
+            
+            
+           
+
+        }
     }
 }
