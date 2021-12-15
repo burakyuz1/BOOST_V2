@@ -1,18 +1,13 @@
 ﻿using _00_CareTaker.Model;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _00_CareTaker.Context
 {
-    public class CareTakerDbContext : DbContext
+    public class CareTakerDbContext : DbContext //namespace ekle
     {
         public CareTakerDbContext() : base("name=CareTakerDbContext")
         {
-
+            //ctor
         }
         public DbSet<CareTaker> CareTakers { get; set; }
         public DbSet<Food> Foods { get; set; }
