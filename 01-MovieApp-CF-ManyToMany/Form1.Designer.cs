@@ -35,6 +35,7 @@
             this.cmbGenres = new System.Windows.Forms.ComboBox();
             this.dgvMovies = new System.Windows.Forms.DataGridView();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovies)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +67,7 @@
             this.cmbGenres.FormattingEnabled = true;
             this.cmbGenres.Location = new System.Drawing.Point(32, 36);
             this.cmbGenres.Name = "cmbGenres";
-            this.cmbGenres.Size = new System.Drawing.Size(286, 32);
+            this.cmbGenres.Size = new System.Drawing.Size(125, 32);
             this.cmbGenres.TabIndex = 2;
             this.cmbGenres.SelectedIndexChanged += new System.EventHandler(this.cmbGenres_SelectedIndexChanged);
             // 
@@ -82,13 +83,13 @@
             this.dgvMovies.MultiSelect = false;
             this.dgvMovies.Name = "dgvMovies";
             this.dgvMovies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMovies.Size = new System.Drawing.Size(565, 244);
+            this.dgvMovies.Size = new System.Drawing.Size(404, 315);
             this.dgvMovies.TabIndex = 3;
             // 
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(414, 406);
+            this.btnUpdate.Location = new System.Drawing.Point(253, 477);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(183, 41);
             this.btnUpdate.TabIndex = 4;
@@ -96,18 +97,30 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // btnNew
+            // 
+            this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnNew.Location = new System.Drawing.Point(32, 477);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(183, 41);
+            this.btnNew.TabIndex = 5;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(635, 469);
+            this.ClientSize = new System.Drawing.Size(474, 540);
+            this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.dgvMovies);
             this.Controls.Add(this.cmbGenres);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.Text = "MovieApp";
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovies)).EndInit();
@@ -123,6 +136,7 @@
         private System.Windows.Forms.ComboBox cmbGenres;
         private System.Windows.Forms.DataGridView dgvMovies;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnNew;
     }
 }
 

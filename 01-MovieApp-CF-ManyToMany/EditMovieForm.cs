@@ -21,27 +21,29 @@ namespace _01_MovieApp_CF_ManyToMany
             this.db = db;
             this.movie = movie;
             InitializeComponent();
-            Text = "Editing: \"" + movie.Title + "\"";
-            txtTitle.Text = movie.Title;
-            nmuRating.Value = movie.Rating;
-            nmuYear.Value = movie.Year;
-
             clbGenres.DataSource = db.Genres.OrderBy(x => x.Name).ToList();
             clbGenres.DisplayMember = "Name";
-
-            for (int i = 0; i < clbGenres.Items.Count; i++)
+            if (movie != null)
             {
-                Genre genre = (Genre)clbGenres.Items[i];
-                //if (movie.Genres.Contains(genre)) 
-                //{
-                // bir diğer yöntem, farklı db context olsa burası patlar.
-                //}
-                if(movie.Genres.Any(x=>x.Movies == genre.Movies))
+                Text = "Editing: \"" + movie.Title + "\"";
+                txtTitle.Text = movie.Title;
+                nmuRating.Value = movie.Rating;
+                nmuYear.Value = movie.Year;
+                for (int i = 0; i < clbGenres.Items.Count; i++)
                 {
-                    clbGenres.SetItemChecked(i, true);
+                    Genre genre = (Genre)clbGenres.Items[i];
+                    //if (movie.Genres.Contains(genre)) 
+                    //{
+                    // bir diğer yöntem, farklı db context olsa burası patlar.
+                    //}
+                    if (movie != null && movie.Genres.Any(x => x.Movies == genre.Movies))
+                        clbGenres.SetItemChecked(i, true);
                 }
             }
-
+            else
+            {
+                Text = "New Movie";
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -54,18 +56,30 @@ namespace _01_MovieApp_CF_ManyToMany
             string title = txtTitle.Text;
             int year = (int)nmuYear.Value;
             decimal rating = nmuRating.Value;
-            if(title == "")
+            if (title == "")
             {
                 MessageBox.Show("You can not pass title empty!");
                 return;
             }
-            movie.Title = title;
-            movie.Year = year;
-            movie.Rating = rating;
-            movie.Genres.Clear();
-            foreach (Genre genre in clbGenres.CheckedItems)
+            if (movie != null)
             {
-                movie.Genres.Add(genre);
+                movie.Title = title;
+                movie.Year = year;
+                movie.Rating = rating;
+                movie.Genres.Clear();
+                foreach (Genre genre in clbGenres.CheckedItems)
+                    movie.Genres.Add(genre);
+            }
+            else
+            {
+                Movie newMovie = new Movie()
+                {
+                    Title = title,
+                    Year = year,
+                    Rating = rating,
+                    Genres = clbGenres.CheckedItems.Cast<Genre>().ToList()
+                };
+                db.Movies.Add(newMovie);
             }
             db.SaveChanges();
             DialogResult = DialogResult.OK;

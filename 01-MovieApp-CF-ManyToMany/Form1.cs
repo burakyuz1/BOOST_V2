@@ -14,6 +14,8 @@ namespace _01_MovieApp_CF_ManyToMany
     public partial class Form1 : Form
     {
         MovieAppDbContext db = new MovieAppDbContext();
+        Movie selectedMovie = null;
+        Genre selectedGenre = null;
         public Form1()
         {
             SeedData();
@@ -25,6 +27,7 @@ namespace _01_MovieApp_CF_ManyToMany
         {
             cmbGenres.DisplayMember = "Name";
             cmbGenres.DataSource = db.Genres.OrderBy(x => x.Name).ToList();
+            cmbGenres.SelectedItem = selectedGenre;
         }
 
         private void SeedData()
@@ -121,20 +124,37 @@ namespace _01_MovieApp_CF_ManyToMany
                     Genres = string.Join(", ", m.Genres.Select(g => g.Name))
                 }
                 ).ToList();
+            if(selectedMovie != null)
+                foreach (DataGridViewRow row in dgvMovies.Rows)
+                    if ((int)row.Cells[0].Value == selectedMovie.Id )
+                        row.Selected = true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dgvMovies.SelectedRows.Count == 0)
-            {
                 return;
-            }
 
+
+            
             int id = (int)dgvMovies.SelectedRows[0].Cells[0].Value;
             Movie movie = db.Movies.Find(id);
             //first or default / where kullanabilirdik.
+            selectedMovie = movie;
+            selectedGenre = (Genre)cmbGenres.SelectedItem;
+
+
 
             DialogResult dr = new EditMovieForm(db, movie).ShowDialog();
+           
+            if (dr == DialogResult.OK)
+                LoadGenres();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            Movie newMovie = new Movie();// buradan devam
+            DialogResult dr = new EditMovieForm(db, newMovie).ShowDialog();
 
             if (dr == DialogResult.OK)
             {
