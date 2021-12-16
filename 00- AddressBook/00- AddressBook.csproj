@@ -76,6 +76,10 @@
     <Compile Include="Migrations\202112161401354_SalarySection.designer.cs">
       <DependentUpon>202112161401354_SalarySection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112161426202_ParentPerson.cs" />
+    <Compile Include="Migrations\202112161426202_ParentPerson.designer.cs">
+      <DependentUpon>202112161426202_ParentPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112161401354_SalarySection.resx">
       <DependentUpon>202112161401354_SalarySection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112161426202_ParentPerson.resx">
+      <DependentUpon>202112161426202_ParentPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
