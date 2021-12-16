@@ -69,6 +69,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAssignCareTaker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAssignCareTaker.Designer.cs">
+      <DependentUpon>FormAssignCareTaker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202112150856445_InitialCreate.cs" />
     <Compile Include="Migrations\202112150856445_InitialCreate.designer.cs">
       <DependentUpon>202112150856445_InitialCreate.cs</DependentUpon>
@@ -76,6 +82,10 @@
     <Compile Include="Migrations\202112150913150_init31.cs" />
     <Compile Include="Migrations\202112150913150_init31.designer.cs">
       <DependentUpon>202112150913150_init31.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112160640120_news.cs" />
+    <Compile Include="Migrations\202112160640120_news.designer.cs">
+      <DependentUpon>202112160640120_news.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\CareTaker.cs" />
@@ -86,11 +96,17 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAssignCareTaker.resx">
+      <DependentUpon>FormAssignCareTaker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112150856445_InitialCreate.resx">
       <DependentUpon>202112150856445_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112150913150_init31.resx">
       <DependentUpon>202112150913150_init31.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112160640120_news.resx">
+      <DependentUpon>202112160640120_news.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
