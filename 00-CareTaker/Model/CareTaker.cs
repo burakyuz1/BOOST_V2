@@ -8,14 +8,14 @@ namespace _00_CareTaker.Model
 {
     public class CareTaker
     {
+        public CareTaker()
+        {
+            Pets = new List<Pet>();
+        }
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
-
-
-
         public virtual ICollection<Pet> Pets { get; set; }
-        
+
     }
 }

@@ -8,6 +8,6 @@ namespace _00_CareTaker.Enums
 {
     public enum Gender
     {
-        Male, Female
+        Male, Female, Nothing
     }
 }
