@@ -3,7 +3,9 @@ using _00_CareTaker.Enums;
 using _00_CareTaker.Model;
 using System;
 using System.Linq;
+using System.Data.Entity;
 using System.Windows.Forms;
+
 
 namespace _00_CareTaker
 {
@@ -15,14 +17,28 @@ namespace _00_CareTaker
             InitializeComponent();
             GetFoods();
             GetPets();
+            GetAllTables();
         }
 
+        private void GetAllTables()
+        {
+            var careTakerList = db.CareTakers.ToList();
+            var petList = db.Pets.ToList();
+            dgvList.DataSource = petList.Select(x => new
+            {
+                x.Name,
+                x.Weight,
+                x.Gender,
+                x.Type,
+                CareTakers = string.Join(", ", x.CareTakers.Select(c => c.FirstName)),
+                FavFood = (x.Food == null) ? "No Favourite" : x.Food.Name
+            }).ToList();
+        }
         private void GetPets()
         {
             lstPets.DisplayMember = "Name";
             lstPets.DataSource = db.Pets.ToList();
         }
-
         private void GetFoods()
         {
             lstFoods.DisplayMember = "Name";
@@ -120,8 +136,9 @@ namespace _00_CareTaker
         private void btnAssign_Click(object sender, EventArgs e)
         {
             Pet editedPet = (Pet)lstPets.SelectedItem;
-            FormAssignCareTaker fct = new FormAssignCareTaker(db,editedPet);
+            FormAssignCareTaker fct = new FormAssignCareTaker(db, editedPet);
             fct.ShowDialog();
+            GetAllTables();
         }
     }
 }

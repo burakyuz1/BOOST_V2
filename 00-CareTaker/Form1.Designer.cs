@@ -44,6 +44,7 @@
             this.txtFood = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.btnAssign = new System.Windows.Forms.Button();
             this.cmbFavourite = new System.Windows.Forms.ComboBox();
             this.btnAddPet = new System.Windows.Forms.Button();
@@ -54,6 +55,7 @@
             this.rdoFemale = new System.Windows.Forms.RadioButton();
             this.rdoMale = new System.Windows.Forms.RadioButton();
             this.chbHasOwner = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -67,8 +69,6 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtTakerName = new System.Windows.Forms.TextBox();
-            this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
@@ -107,6 +107,8 @@
             // 
             // dgvList
             // 
+            this.dgvList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvList.Location = new System.Drawing.Point(8, 87);
             this.dgvList.Name = "dgvList";
@@ -130,7 +132,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.tabPage1.Size = new System.Drawing.Size(816, 390);
+            this.tabPage1.Size = new System.Drawing.Size(816, 465);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Food";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -262,6 +264,13 @@
             this.tabPage3.Text = "Pet";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // dtpDateOfBirth
+            // 
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(121, 381);
+            this.dtpDateOfBirth.Name = "dtpDateOfBirth";
+            this.dtpDateOfBirth.Size = new System.Drawing.Size(200, 29);
+            this.dtpDateOfBirth.TabIndex = 12;
+            // 
             // btnAssign
             // 
             this.btnAssign.Location = new System.Drawing.Point(572, 356);
@@ -355,6 +364,17 @@
             this.chbHasOwner.TabIndex = 2;
             this.chbHasOwner.Text = "Has Owner?";
             this.chbHasOwner.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(5, 381);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(110, 24);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Date of Birth";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label12.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
@@ -481,24 +501,6 @@
             this.txtTakerName.Name = "txtTakerName";
             this.txtTakerName.Size = new System.Drawing.Size(189, 29);
             this.txtTakerName.TabIndex = 0;
-            // 
-            // dtpDateOfBirth
-            // 
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(121, 381);
-            this.dtpDateOfBirth.Name = "dtpDateOfBirth";
-            this.dtpDateOfBirth.Size = new System.Drawing.Size(200, 29);
-            this.dtpDateOfBirth.TabIndex = 12;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(5, 381);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(110, 24);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Date of Birth";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label12.Click += new System.EventHandler(this.label8_Click);
             // 
             // Form1
             // 

@@ -121,6 +121,7 @@ namespace _01_MovieApp_CF_ManyToMany
                     m.Title,
                     m.Year,
                     m.Rating,
+                    
                     Genres = string.Join(", ", m.Genres.Select(g => g.Name))
                 }
                 ).ToList();
