@@ -28,64 +28,93 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Abidinpaşa");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Tuzluçayır");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Natoyolu");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Mamak", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Bilkent");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Çankaya", new System.Windows.Forms.TreeNode[] {
-            treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Ankara", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode6});
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Türkiye", new System.Windows.Forms.TreeNode[] {
-            treeNode7});
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.trwPlaces = new System.Windows.Forms.TreeView();
+            this.txtPlaceName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnAddPlace = new System.Windows.Forms.Button();
+            this.txtParentName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // treeView1
+            // trwPlaces
             // 
-            this.treeView1.Location = new System.Drawing.Point(148, 43);
-            this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node4";
-            treeNode1.Text = "Abidinpaşa";
-            treeNode2.Name = "Node6";
-            treeNode2.Text = "Tuzluçayır";
-            treeNode3.Name = "Node7";
-            treeNode3.Text = "Natoyolu";
-            treeNode4.Name = "Node3";
-            treeNode4.Text = "Mamak";
-            treeNode5.Name = "Node8";
-            treeNode5.Text = "Bilkent";
-            treeNode6.Name = "Node5";
-            treeNode6.Text = "Çankaya";
-            treeNode7.Name = "Node1";
-            treeNode7.Text = "Ankara";
-            treeNode8.Name = "Node0";
-            treeNode8.Text = "Türkiye";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode8});
-            this.treeView1.Size = new System.Drawing.Size(413, 276);
-            this.treeView1.TabIndex = 0;
+            this.trwPlaces.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.trwPlaces.Location = new System.Drawing.Point(12, 12);
+            this.trwPlaces.Name = "trwPlaces";
+            this.trwPlaces.Size = new System.Drawing.Size(451, 426);
+            this.trwPlaces.TabIndex = 0;
+            this.trwPlaces.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trwPlaces_AfterSelect);
+            // 
+            // txtPlaceName
+            // 
+            this.txtPlaceName.Location = new System.Drawing.Point(582, 148);
+            this.txtPlaceName.Name = "txtPlaceName";
+            this.txtPlaceName.Size = new System.Drawing.Size(158, 20);
+            this.txtPlaceName.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(514, 151);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Place Name:";
+            // 
+            // btnAddPlace
+            // 
+            this.btnAddPlace.Location = new System.Drawing.Point(665, 192);
+            this.btnAddPlace.Name = "btnAddPlace";
+            this.btnAddPlace.Size = new System.Drawing.Size(75, 23);
+            this.btnAddPlace.TabIndex = 3;
+            this.btnAddPlace.Text = "Add";
+            this.btnAddPlace.UseVisualStyleBackColor = true;
+            this.btnAddPlace.Click += new System.EventHandler(this.btnAddPlace_Click);
+            // 
+            // txtParentName
+            // 
+            this.txtParentName.Location = new System.Drawing.Point(582, 114);
+            this.txtParentName.Name = "txtParentName";
+            this.txtParentName.ReadOnly = true;
+            this.txtParentName.Size = new System.Drawing.Size(158, 20);
+            this.txtParentName.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(535, 117);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Parent:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.btnAddPlace);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtParentName);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtPlaceName);
+            this.Controls.Add(this.trwPlaces);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView trwPlaces;
+        private System.Windows.Forms.TextBox txtPlaceName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnAddPlace;
+        private System.Windows.Forms.TextBox txtParentName;
+        private System.Windows.Forms.Label label2;
     }
 }
 
