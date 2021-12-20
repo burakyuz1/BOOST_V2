@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbilityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbilityForm.Designer.cs">
+      <DependentUpon>AbilityForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\SuperCharacterDbContext.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -64,20 +70,29 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AbilityMapping.cs" />
-    <Compile Include="Migrations\202112200711351_init.cs" />
-    <Compile Include="Migrations\202112200711351_init.designer.cs">
-      <DependentUpon>202112200711351_init.cs</DependentUpon>
+    <Compile Include="Migrations\202112200942035_init.cs" />
+    <Compile Include="Migrations\202112200942035_init.designer.cs">
+      <DependentUpon>202112200942035_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ability.cs" />
     <Compile Include="Models\SuperCharacter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SuperCharacterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuperCharacterForm.Designer.cs">
+      <DependentUpon>SuperCharacterForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AbilityForm.resx">
+      <DependentUpon>AbilityForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112200711351_init.resx">
-      <DependentUpon>202112200711351_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202112200942035_init.resx">
+      <DependentUpon>202112200942035_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -88,6 +103,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SuperCharacterForm.resx">
+      <DependentUpon>SuperCharacterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

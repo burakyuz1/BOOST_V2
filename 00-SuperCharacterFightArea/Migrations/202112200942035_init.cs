@@ -11,7 +11,7 @@
                 "dbo.Abilities",
                 c => new
                     {
-                        Id = c.Int(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 100),
                         AmountOfAbility = c.Decimal(nullable: false, precision: 5, scale: 2),
                         MySuperCharacterId = c.Int(nullable: false),

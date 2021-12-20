@@ -13,7 +13,7 @@ namespace _00_SuperCharacterFightArea.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202112200711351_init"; }
+            get { return "202112200942035_init"; }
         }
         
         string IMigrationMetadata.Source

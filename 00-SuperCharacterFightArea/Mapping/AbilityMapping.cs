@@ -13,7 +13,7 @@ namespace _00_SuperCharacterFightArea.Mapping
         public AbilityMapping()
         {
             HasKey(k => k.Id)
-                .Property(k => k.Name)
+                .Property(k => k.Id)
                 .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
             Property(k => k.Name)
